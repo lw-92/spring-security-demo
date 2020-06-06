@@ -1,15 +1,11 @@
 package com.lee.endpoint;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("noauth")
-public class NoAuthEndpoint {
+public class NoAuthEndpoint extends AbstractEndpoint{
 
-    @GetMapping("hello")
-    public String  hello(){
-        return  "noAuth  hello";
-    }
+
 }

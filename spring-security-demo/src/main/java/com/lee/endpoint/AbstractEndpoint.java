@@ -1,12 +1,13 @@
 package com.lee.endpoint;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.security.Principal;
 
 public abstract class AbstractEndpoint {
     @RequestMapping("hello")
-    public String hello(Principal principal) {
-        return this.getClass().getSimpleName() + " hello " + principal.getName();
+    public String hello() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return this.getClass().getSimpleName() + " hello " + authentication.getPrincipal();
     }
 }

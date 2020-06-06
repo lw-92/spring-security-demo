@@ -20,17 +20,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+//                .anonymous().and()
                 .authorizeRequests()// 授权配置
-                .antMatchers("/noauth/**").permitAll() //注意要以'/' 开头
+                .antMatchers("/noauth/**").anonymous() //注意要以'/' 开头  匿名用户可以访问，
                 .antMatchers("/admin/**").hasRole("admin") //admin必须要有admin角色才能访问
                 .antMatchers("/user/**").hasAnyRole("admin", "user")  //admin  或者user能访问
                 .antMatchers("/authority/delete").hasAuthority("delete") //必须要有delete权限
                 .antMatchers("/authority/add").hasAuthority("add") //必须要有add权限
-                .anyRequest().authenticated()
+                .anyRequest().anonymous()
                 .and()
                 .formLogin() // 登录配置，这里会加入一个UsernamePasswordAuthenticationFilter
                 .and()
-                .httpBasic();
+                .httpBasic();  //未登录时，给一个匿名用户
     }
 
     @Bean
