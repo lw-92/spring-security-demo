@@ -2,13 +2,19 @@ spring security的使用以及相关流程分析
 
 #springboot集成简单配置
 
+##基础权限配置
 
+##匿名用户
 
 ##自定义登录页面
+
+##自定义error界面
 
 ##模拟短信登录
 
 ##使用注解权限配置
+
+
 
 
 #spring  security oauth2的demo
