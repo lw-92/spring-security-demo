@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasAnyRole("admin", "user")  //admin  或者user能访问
                 .antMatchers("/authority/delete").hasAuthority("delete") //必须要有delete权限
                 .antMatchers("/authority/add").hasAuthority("add") //必须要有add权限
-                .anyRequest().anonymous()
+                .anyRequest().permitAll()
                 .and()
                 .formLogin() // 登录配置，这里会加入一个UsernamePasswordAuthenticationFilter
                 .and()
@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         //配置了权限
         manager.createUser(users.username("user").password("password").roles("user").authorities("delete", "add").build());
-        manager.createUser(users.username("admin").password("password").roles("user", "admin").build());
+        manager.createUser(users.username("admin").password("password").roles("user", "admin").authorities("read", "add").build());
         return manager;
     }
 

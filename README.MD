@@ -10,11 +10,17 @@ spring security的使用以及相关流程分析
 
 ##自定义error界面
 
+##自定义登录成功处理逻辑
+
+##自定义没有权限处理逻辑
+
 ##退出登录的配置~~~~
 
 ##模拟短信登录
 
-##使用注解权限配置
+##使用Expression-Based Access Control
+
+##remember me功能
 
 
 
