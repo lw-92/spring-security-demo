@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin() // 登录配置，这里会加入一个UsernamePasswordAuthenticationFilter
                 .and()
                 .httpBasic();  //未登录时，给一个匿名用户
-//        http.exceptionHandling().accessDeniedHandler(myAccessDeniedHandler).authenticationEntryPoint(myAuthenticationEntryPoint);
+        http.exceptionHandling().accessDeniedHandler(myAccessDeniedHandler).authenticationEntryPoint(myAuthenticationEntryPoint);
     }
 
     @Bean
