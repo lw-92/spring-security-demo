@@ -3,10 +3,11 @@ spring security的使用以及相关流程分析
 #springboot集成简单配置
 
 ##基础权限配置
-
+已完成
 ##匿名用户
-
+已完成
 ##自定义登录页面
+默认的登录界面为 login,在导入formlogin
 
 ##自定义error界面
 
@@ -17,6 +18,7 @@ spring security的使用以及相关流程分析
 ##退出登录的配置~~~~
 
 ##模拟短信登录
+
 
 ##使用Expression-Based Access Control
 
