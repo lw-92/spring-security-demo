@@ -1,4 +1,4 @@
-package com.lee.configuration;
+package com.lee.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;

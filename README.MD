@@ -9,8 +9,6 @@ spring security的使用以及相关流程分析
 ##自定义登录页面
 默认的登录界面为 login,在导入formlogin
 
-##自定义error界面
-
 ##自定义登录成功处理逻辑
 Done
 
@@ -19,14 +17,12 @@ Done
 
 ##退出登录的配置~~~~
 
-##模拟短信登录
+##自定义多种登录方式
 
 
 ##使用Expression-Based Access Control
 
 ##remember me功能
-
-
 
 
 #spring  security oauth2的demo

@@ -1,6 +1,7 @@
 package com.lee.configuration;
 
 import com.lee.auth.MyAccessDeniedHandler;
+import com.lee.auth.MyAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
