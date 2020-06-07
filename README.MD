@@ -19,17 +19,23 @@ Done
 
 ##退出登录的配置~~~~
 
-logout 中使用
+logout 中使用，定义logout的成功处理方式即可
 
 ##自定义多种登录方式
 
-##内置得过滤器
+done
+
+##内置过滤器作用详解
 [参考](https://www.felord.cn/spring-security-filters.html)
 
 
 ##使用Expression-Based Access Control
 
+使用hasRole时需要加前缀ROLE_
+
 ##remember me功能
+
+存储了一个token,然后设置了cookie，下次登录时，只需要校验cookie即可登录
 
 
 #spring  security oauth2的demo
