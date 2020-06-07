@@ -4,6 +4,10 @@ spring security的使用以及相关流程分析
 
 ##基础权限配置
 已完成
+
+#session中的context设置
+SecurityContextPersistenceFilter 在整个security的过滤链的第一个，会将authentication的信息存入到session中，request
+时读取，response时放入，这样就保证了登录后不用在重复登录；
 ##匿名用户
 已完成
 ##自定义登录页面
