@@ -10,8 +10,6 @@ SecurityContextPersistenceFilter 在整个security的过滤链的第一个，会
 时读取，response时放入，这样就保证了登录后不用在重复登录；
 ##匿名用户
 已完成
-##自定义登录页面
-默认的登录界面为 login,在导入formlogin
 
 ##自定义登录成功处理逻辑
 Done
