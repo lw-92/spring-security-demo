@@ -2,3 +2,6 @@ spring:
   freemarker:
     charset: UTF-8
     suffix: .html
+logging:
+  level:
+    root: debug

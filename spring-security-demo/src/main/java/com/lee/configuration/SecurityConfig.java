@@ -2,6 +2,10 @@ package com.lee.configuration;
 
 import com.lee.auth.MyAccessDeniedHandler;
 import com.lee.auth.MyAuthenticationEntryPoint;
+import com.lee.login.SmsAuthenticationFailureHandler;
+import com.lee.login.SmsAuthenticationFilter;
+import com.lee.login.SmsAuthenticationProvider;
+import com.lee.login.SmsAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +17,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -24,6 +29,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private MyAuthenticationEntryPoint myAuthenticationEntryPoint;
+
+    @Autowired
+    private SmsAuthenticationProvider smsAuthenticationProvider;
+
+    @Autowired
+    private SmsAuthenticationFailureHandler smsAuthenticationFailureHandler;
+
+    @Autowired
+    private SmsAuthenticationSuccessHandler smsAuthenticationSuccessHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -40,7 +54,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin() // 登录配置，这里会加入一个UsernamePasswordAuthenticationFilter
                 .and()
                 .httpBasic();  //未登录时，给一个匿名用户
-//        http.exceptionHandling().accessDeniedHandler(myAccessDeniedHandler).authenticationEntryPoint(myAuthenticationEntryPoint);
+
+        // 这里配置短信登录
+
+        SmsAuthenticationFilter smsAuthenticationFilter=new SmsAuthenticationFilter();
+        smsAuthenticationFilter.setAuthenticationManager(authenticationManager());
+        smsAuthenticationFilter.setAuthenticationSuccessHandler(smsAuthenticationSuccessHandler);
+        smsAuthenticationFilter.setAuthenticationFailureHandler(smsAuthenticationFailureHandler);
+
+        // 新增filter
+        http.authenticationProvider(smsAuthenticationProvider)
+                .addFilterAfter(smsAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
+        http.exceptionHandling().accessDeniedHandler(myAccessDeniedHandler).authenticationEntryPoint(myAuthenticationEntryPoint);
     }
 
     @Bean
